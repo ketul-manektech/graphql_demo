@@ -1,10 +1,11 @@
 from fastapi import Depends, FastAPI
 
 from app.db import User, create_db_and_tables
-from app.schemas import UserCreate, User_Info,Update_User
+from app.schemas import UserCreate, User_Info, Update_User
 from app.users import auth_backend, current_active_user, fastapi_users
 
 app = FastAPI()
+print("app: ", app)
 
 app.include_router(
     fastapi_users.get_auth_router(auth_backend), prefix="/auth/jwt", tags=["auth"]
